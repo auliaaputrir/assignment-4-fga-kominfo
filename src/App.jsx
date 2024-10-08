@@ -7,11 +7,11 @@ function App() {
   const currencyList = ["CAD", "IDR", "JPY", "CHF", "EUR", "USD"];
   useEffect(() => {
     const getRates = async () => {
-      const result = await fetchRates(); // Tunggu hasil dari fetchRates
-      setFetchRatesResult(result); // Set hasilnya ke state
+      const result = await fetchRates(); 
+      setFetchRatesResult(result); 
     };
 
-    getRates(); // Panggil fungsi async di dalam useEffect
+    getRates(); 
   }, []);
   const calculateRateBuy = (rate) => {
     return (parseFloat(rate) * 1.02).toFixed(4);
@@ -35,8 +35,8 @@ function App() {
             {currencyList.map((currency, index) => (
               <tr key={index}>
                 <td className="px-4 py-2 border-0">{currency}</td>
-                <td className="px-4 py-2 border-0"> {Number(fetchRatesResult.rates[currency]).toFixed(4)}</td>
                 <td className="px-4 py-2 border-0">{calculateRateBuy(fetchRatesResult.rates[currency])}</td>
+                <td className="px-4 py-2 border-0"> {Number(fetchRatesResult.rates[currency]).toFixed(4)}</td>
                 <td className="px-4 py-2 border-0">{calculateRateSell(fetchRatesResult.rates[currency])}</td>
               </tr>
             ))}
